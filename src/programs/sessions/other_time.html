@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.0.0
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI for React - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,CSS,SCSS,HTML,RWD,Dashboard,React">
+    <title>Shipyard</title>
+    <!--
+    manifest.json provides metadata used when your web app is added to the
+    homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+  -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/main.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="/main.css" rel="stylesheet" />
+    
+  <style>
+        .dataTables_filter {
+          width: 100%;
+      }
+        </style>
+</head>
+
+<body class="header-fixed s sidebar-fixed">
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+        <div class="app">
+            <header class="app-header navbar">
+                <button type="button" class="d-lg-none navbar-toggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a full="[object Object]" minimized="[object Object]" class="navbar-brand">
+                    <img src="data:image/png;base64,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"
+                        width="89" height="25" alt="Openwater Logo" class="navbar-brand-full">
+                    <img src="/static/media/sygnet.dba7f081.svg" width="30" height="30" alt="Openwater Logo" class="navbar-brand-minimized">
+                </a>
+                <button type="button" class="d-md-down-none app-side-toggler hidden navbar-toggler" id="AppSidebarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <ul class="d-md-down-none navbar-nav">
+                    <li class="px-3 nav-item">
+                        <a href="#" class="nav-link">Programs</a>
+                    </li>
+                    <li class="px-3 nav-item">
+                        <a href="#" class="nav-link">Website</a>
+                    </li>
+                    <li class="px-3 nav-item">
+                        <a href="#" class="nav-link">CRM</a>
+                    </li>
+                </ul>
+                <ul class="ml-auto navbar-nav">
+                    <li class="d-md-down-none nav-item">
+                        <a href="#" class="nav-link">3:10 PM</a>
+                    </li>
+                    <li class="d-md-down-none nav-item">
+                        <a title="Help Center" target="_blank" href="https://help.getopenwater.com" class="nav-link">
+                            <i class="fa fa-question-circle-o"></i>
+                        </a>
+                    </li>
+                    <li class="d-md-down-none nav-item">
+                        <a title="Users / Permissions" href="#" class="nav-link">
+                            <i class="fa fa-user-o"></i>
+                        </a>
+                    </li>
+                    <li class="d-md-down-none nav-item">
+                        <a title="Tasks/Reports" href="#" class="nav-link">
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </li>
+                    <li class="d-md-down-none dropdown nav-item">
+                        <a aria-haspopup="true" href="#" class="nav-link" aria-expanded="false">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-file-o"></i>
+                            </a>
+                        </a>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" style="right: auto;">
+                            <div tabindex="-1" class="text-center dropdown-header">
+                                <strong>Logs</strong>
+                            </div>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <i class="fa fa-envelope-o text-success"></i> Email Activity
+                            </button>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <i class="fa fa-credit-card text-danger"></i> Payment Gateway Activity
+                            </button>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <i class="fa fa-key text-primary"></i> Single Sign On Activity
+                            </button>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <i class="fa fa-lock text-warning"></i> System Activity
+                            </button>
+                        </div>
+                    </li>
+                    <li class="d-md-down-none nav-item">
+                        <a title="Settings" href="/#/settings" class="nav-link">
+                            <i class="fa fa-cogs"></i>
+                        </a>
+                    </li>
+                    <li class="d-md-down-none dropdown nav-item">
+                        <a aria-haspopup="true" href="#" class="nav-link" aria-expanded="false">
+                            <a href="#" class="nav-link">
+                                <i class="icon-bell"></i>
+                                <span class="badge badge-danger badge-pill">5</span>
+                            </a>
+                        </a>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" style="right: auto;">
+                            <div tabindex="-1" class="text-center dropdown-header">
+                                <strong>You have 5 messages</strong>
+                            </div>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <div class="message">
+                                    <div class="py-3 mr-3 float-left">
+                                        <div class="avatar">
+                                            <img class="img-avatar" src="/src/img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
+                                            <span class="avatar-status badge-success"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">John Doe</small>
+                                        <small class="text-muted float-right mt-1">Just now</small>
+                                    </div>
+                                    <div class="text-truncate font-weight-bold">
+                                        <span class="fa fa-exclamation text-danger"></span> Important message
+                                    </div>
+                                    <div class="small text-muted text-truncate">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+                                    </div>
+                                </div>
+                            </button>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <div class="message">
+                                    <div class="py-3 mr-3 float-left">
+                                        <div class="avatar">
+                                            <img class="img-avatar" src="https://image.ibb.co/kpg1yo/6.jpg" alt="admin@bootstrapmaster.com">
+                                            <span class="avatar-status badge-warning"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">John Doe</small>
+                                        <small class="text-muted float-right mt-1">5 minutes ago</small>
+                                    </div>
+                                    <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                                    <div class="small text-muted text-truncate">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a aria-haspopup="true" href="#" class="nav-link" aria-expanded="false">
+                            <img src="https://image.ibb.co/kpg1yo/6.jpg" title="noreply@secure-platform.com" class="img-avatar" alt="admin@bootstrapmaster.com">
+                        </a>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" style="right: auto;">
+                            <div tabindex="-1" class="text-center dropdown-header">
+                                <strong>noreply@secure-platform.com</strong>
+                            </div>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <i class="fa fa-key"></i> Change Password
+                            </button>
+                            <button type="button" tabindex="0" class="dropdown-item">
+                                <i class="fa fa-lock"></i> Logout
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </header>
+            <div class="app-body">
+                <div class="sidebar">
+                    <div class="scrollbar-container sidebar-nav ps">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#/dashboard">
+                                    <i class="nav-icon icon-speedometer"></i>Dashboard
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <main class="main">
+                    <div class="">
+                        <nav class="" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#/">Home</a>
+                                </li>
+                                <li class="active breadcrumb-item" aria-current="page">Manage Program</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="animated fadeIn">
+                            <div class="row">
+                                <div class="full-width card">
+                                    <div class="card-header">
+                                        <a href="javascript:;" class="black-icon-color">
+                                        </a>
+                                        <h5 style="float: left;margin-right: 26px;">Abstracts Speaker Submission</h5>
+                                        <div style="float:right">
+                                            <button type="button" onclick="window.manageProgramToggleClick($(this))" class="manage-program-toggle btn btn-pill btn-block btn-primary btn-sm"
+                                                style="width: 100px;display: block;float: left;margin-right: 19px;">
+                                                Manage
+                                            </button>
+                                            <button type="button" id="toggleConfiguraion" onclick="window.manageProgramToggleClick($(this))" class="manage-program-toggle btn btn-pill btn-sm"
+                                                style="width: 100px;display: block;float: left;">
+                                                Configuration
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="no-padding card-body">
+                                        <div id="topMenu"></div>
+
+                                        <div class="email-app mb-4 ">
+                                            <nav id="leftMenu" style="display:none"> </nav>
+
+                                            <div class="inbox container" style="margin-left: 0px;max-width: 100%">
+
+                                                <div class="card" style="margin-top:20px;">
+                                                    <div class="card-header">
+                                                        <strong>Other Time Types</strong>
+                                                        <!--<small>Form</small>-->
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="row">
+
+
+
+                                                            <div id="roomsTableContainer" style="width:100%">
+                                                                <input type="button" class="btn btn-primary" value="Add Other Time Type" onclick="window.addRoom()" />
+                                                                <table id="roomsTable" class="datatables tbl o__fit o__fixed keyboard_accessible js__user-list-table">
+                                                                    <thead>
+                                                                        <tr class="o__fixed-header">
+                                                                            <th class="tbl__cell t__label name o__fixed-header">
+                                                                                Name
+                                                                            </th>
+
+                                                                            <th class="tbl__cell t__label o__fixed-header">
+                                                                                Description
+                                                                            </th>
+                                                                            <th class="tbl__cell t__label o__fixed-header">
+                                                                                Action
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <tbody data-sensitive="true" class="tbl__body js__users-table__body shim__users-table__body">
+                                                                        <tr>
+                                                                            <td class="tbl__cell o__contains-button shim__force-cell-button-width">Other 1</td>
+                                                                            <td class="tbl__cell o__contains-button shim__force-cell-button-width"></td>
+                                                                            <td class="tbl__cell o__contains-button shim__force-cell-button-width"><a
+                                                                                    href="/">Edit</a> | <a href="/">Delete</a></td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td class="tbl__cell o__contains-button shim__force-cell-button-width">Other 2</td>
+                                                                            <td class="tbl__cell o__contains-button shim__force-cell-button-width"></td>
+                                                                            <td class="tbl__cell o__contains-button shim__force-cell-button-width"><a
+                                                                                    href="/">Edit</a> | <a href="/">Delete</a></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <div id="addRoomContainer" style="display:none;width:100%">
+
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label>Name</label>
+                                                                        <div>
+
+                                                                            <input type="text" class="form-control" />
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Description
+                                                                            </label>
+                                                                            <div>
+    
+                                                                                <input type="text" class="form-control" />
+                                                                            </div>
+    
+                                                                        </div>
+                                                                    </div>
+    
+
+                                                                <hr>
+                                                                
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                            <input type="button" class="btn btn-primary" value="Back" onclick="window.hideAddRoom()" />
+
+                                                                        <input type="button" class="btn btn-primary" value="Save" onclick="window.hideAddRoom()" />
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <footer class="app-footer">
+                <span>
+                    <a href="#">Copyright</a> © OpenWater Software, Inc.
+                </span>
+                <span class="ml-auto">Current Timezone: Eastern Standard Time (UTC -5:00)</span>
+                <span class="ml-auto">
+                    <a href="#">System Status</a>
+                </span>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/themes/dark.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/themes/royal.min.css" />
+
+<!-- Include Editor style. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css"
+/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_style.min.css" rel="stylesheet" type="text/css"
+/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+<!-- Include Editor JS files. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/js/froala_editor.pkgd.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+
+<script src="/main.js"></script>
+<script type="text/javascript">
+
+    window.activeMainMenu = "";
+    window.activeMiddleMenu = "";
+    window.mode = "manage";
+
+    $(document).ready(function () {
+
+        $('#topMenu').load('/programs/top_menu.html', function () { });
+
+        setTimeout(function () {
+            $('#toggleConfiguraion').trigger('click');
+            $('#linkSessions').trigger('click');
+        }, 500)
+
+         $('.datatables').DataTable({
+      "dom": '<"top">ft<"bottom"irlp><"clear">'
+    });
+    })
+
+    window.addRoom = function () {
+        window.showAddRoom();
+    }
+
+    window.showAddRoom = function () {
+        $('#addRoomContainer').show();
+        $('#roomsTableContainer').hide();
+
+    }
+
+
+    window.hideAddRoom = function () {
+        $('#addRoomContainer').hide();
+        $('#roomsTableContainer').show();
+
+    }
+
+</script>

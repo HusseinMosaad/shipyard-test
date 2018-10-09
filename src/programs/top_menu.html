@@ -1,0 +1,39 @@
+<div class="program-setting">
+  <ul class="nav nav-tabs" role="tablist" style="display:flex !important">
+    <li class="nav-item">
+      <a id="programOverviewLink" class="nav-link active" data-toggle="tab" onclick="window.handleMainMenuClick($(this))" href="#dashboard"
+         role="tab" aria-controls="dashboard">Program Overview</a>
+    </li>
+    <li class="nav-item">
+        <a id="categoriesLink" class="nav-link" data-toggle="tab" onclick="window.handleMainMenuClick($(this))" href="#categories"
+           role="tab" aria-controls="categories">Categories</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#submissions" id="linkRound1"  onclick="window.handleMainMenuClick($(this))" role="tab" aria-controls="submissions">Round 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#judging" onclick="window.handleMainMenuClick($(this))" role="tab" aria-controls="judging">Round 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#finalists" onclick="window.handleMainMenuClick($(this))" role="tab" aria-controls="finalists">Round 3</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#finalists" onclick="window.handleMainMenuClick($(this))" role="tab" aria-controls="finalists">Judge Sign Up</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link" id="linkSessions" data-toggle="tab" href="#configuration" onclick="window.handleMainMenuClick($(this))" role="tab" aria-controls="configuration">Sessions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="schedulerLink" data-toggle="tab" href="#permission" onclick="window.handleMainMenuClick($(this))" role="tab" aria-controls="permission">Scheduler</a>
+    </li>
+  </ul>
+  <div class="tab-content" style="border-bottom:0px">
+    <div style="padding:0px;" class="tab-pane active" id="dashboard" role="tabpanel">
+      <ul class="navbar-nav" id="middleMenu"></ul>
+    </div>
+  </div>
+
+  <div>
+    <ul class="navbar-nav" id="headTabs" style="display:none"></ul>
+  </div>
+</div>
